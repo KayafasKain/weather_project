@@ -8,5 +8,10 @@
 	"security": {
 		"tokenSecret": "sdgh9d32R!@#RY*Hf2h8e23f83gfyh32jfvn9eh82yrR#*@Yfy2369g3wehbf2-3hf62hf010j#@&T^FG2h38j-t-hh238fhy8r",
 		"appid": "93cda2aae1ee047101ac8bfeec98038a"
-	}	
+	},
+	"Tests": {
+		"city": "Kiev",
+		"wrong_city": "Kievs",
+		"wrong_date": "2017-14-30"
+	}		
 }

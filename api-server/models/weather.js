@@ -51,7 +51,8 @@ var weather   = new Schema({
 var Weather = module.exports = mongoose.model('weather', weather);
 
 
-module.exports.CheckExistCity = function( name ) {
+module.exports.CheckExistCityInDB = function( name ) {
+
 	let town = Weather.findOne({ 
 			"city.name": name 
 	});
@@ -78,7 +79,6 @@ module.exports.CreateCity = function( json ) {
 }
 
 module.exports.UpdateCityWeather = async ( json ) => {
-	
 
 	let up_to_date = await Weather.findOne({ "city.name": json.city.name });
 
@@ -105,7 +105,7 @@ module.exports.UpdateCityWeather = async ( json ) => {
 module.exports.FindWeather = async ( name, date ) => {  
 
 	let aggregate = await Weather.aggregate([
-		{ "$match": { "city.name": "Kiev" } },
+		{ "$match": { "city.name": name } },
 		{ "$project": { 
 			"city.list": { 
 					"$filter": { 
@@ -119,6 +119,10 @@ module.exports.FindWeather = async ( name, date ) => {
 			}
 		}}
 	]);
+	
+	if( !aggregate[0] ){
+		throw { name: 'wrong_city'};
+	}
 
 	if( aggregate[0].city.list.length == 0){
 		return false;

@@ -10,7 +10,10 @@ var start_db = function(){
 		"@" +
 		config['MongoDB'].address +
 		"/" +
-		config['MongoDB'].db_name
+		config['MongoDB'].db_name,
+		{
+			useMongoClient: true
+		}
 
 	); 
 
