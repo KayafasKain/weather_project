@@ -12,6 +12,10 @@
 	"Tests": {
 		"city": "Kiev",
 		"wrong_city": "Kievs",
-		"wrong_date": "2017-14-30"
+		"wrong_date": "2017-14-30",
+		"lat": "40",
+		"lon": "130",
+		"wrong_lat": "99999",
+		"wrong_lon": "99999"
 	}		
 }
