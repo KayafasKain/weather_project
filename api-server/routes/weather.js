@@ -12,10 +12,11 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 		let date = validators.ValidateDate( req.params.date );
 		let	res_weather = null;
 
-		let	is_city_exist = await weather.CheckExistCityInDB( city );        
+		let	is_city_exist = await weather.CheckExistCityInDB( city ); 
+		     
 
 		if ( !is_city_exist ) { 
-			let json = await  weather_api.CityFiveDayForecastRequest( city );
+			let json = await weather_api.CityFiveDayForecastRequest( city );
 			await weather.CreateCity( json );
 			res_weather = await weather.FindWeather( city, date );
 		}else{
@@ -59,6 +60,72 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 				res.json({
 					items: { 
 						message: "City not found!" 
+					} 
+				})
+				return;				
+				break;								
+		}
+		next(err) 
+	}
+});
+
+//recieving 5 days weather forecast by coordinates and date in format: YYYY-MM-DD
+router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
+	try {
+
+		let lat = req.params.lat;
+		let lon = req.params.lon;
+		let date = validators.ValidateDate( req.params.date );
+		let	res_weather = null;
+
+		let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+		let	is_city_exist = await weather.CheckExistCityInDB( json.city.name );        
+
+		if ( !is_city_exist ) { 
+			let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+			await weather.CreateCoord( json );
+			res_weather = await weather.FindWeather( json.city.name, date );
+		}else{
+			res_weather = await weather.FindWeather( json.city.name, date );
+			if( !res_weather ){
+				let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+				await weather.UpdateCoordWeather( json );
+				res_weather = await weather.FindWeather( json.city.name, date );
+			}
+		}	
+
+		if ( !res_weather ) {
+			throw {name: 'weather_unable'};
+		}else{
+			res.statusCode = 200;
+			res.json({
+				items: res_weather 
+			})
+		}
+
+	} catch (err) {
+		switch(err.name) {
+			case "weather_unable":
+				res.statusCode = 500;
+				res.json({
+					items: { message: "Unable to get weather" } 
+				})	
+				return;			
+				break;
+			case "invalid_date":
+				res.statusCode = 415;
+				res.json({
+					items: { 
+						message: "Invalid date, please send string in following format: YYYY-MM-DD, also MM must be less than 12 and DD according to calendar" 
+					} 
+				})
+				return;				
+				break;
+			case "wrong_coords":
+				res.statusCode = 404;
+				res.json({
+					items: { 
+						message: "Coords not found!" 
 					} 
 				})
 				return;				
