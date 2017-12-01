@@ -11,18 +11,21 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 		let city = req.params.city;
 		let date = validators.ValidateDate( req.params.date );
 		let	res_weather = null;
+		let requst_to_foreign_api = false;
 
 		let	is_city_exist = await weather.CheckExistCityInDB( city ); 
 		     
 
 		if ( !is_city_exist ) { 
 			let json = await weather_api.CityFiveDayForecastRequest( city );
+			requst_to_foreign_api = true;
 			await weather.CreateCity( json );
 			res_weather = await weather.FindWeather( city, date );
 		}else{
 			res_weather = await weather.FindWeather( city, date );
 			if( !res_weather ){
 				let json = await  weather_api.CityFiveDayForecastRequest( city );
+				requst_to_foreign_api = true;
 				await weather.UpdateCityWeather( json );
 				res_weather = await weather.FindWeather( city, date );
 			}
@@ -33,7 +36,8 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 		}else{
 			res.statusCode = 200;
 			res.json({
-				items: res_weather 
+				items: res_weather ,
+				requst_to_foreign_api: requst_to_foreign_api
 			})
 		}
 
@@ -77,18 +81,22 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 		let lon = req.params.lon;
 		let date = validators.ValidateDate( req.params.date );
 		let	res_weather = null;
+		let requst_to_foreign_api = false;
 
 		let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
-		let	is_city_exist = await weather.CheckExistCityInDB( json.city.name );        
+		let	is_city_exist = await weather.CheckExistCityInDB( json.city.name );
+		requst_to_foreign_api = true;        
 
 		if ( !is_city_exist ) { 
 			let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+			requst_to_foreign_api = true;
 			await weather.CreateCoord( json );
 			res_weather = await weather.FindWeather( json.city.name, date );
 		}else{
 			res_weather = await weather.FindWeather( json.city.name, date );
 			if( !res_weather ){
 				let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+				requst_to_foreign_api = true;
 				await weather.UpdateCoordWeather( json );
 				res_weather = await weather.FindWeather( json.city.name, date );
 			}
@@ -99,7 +107,8 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 		}else{
 			res.statusCode = 200;
 			res.json({
-				items: res_weather 
+				items: res_weather,
+				requst_to_foreign_api: requst_to_foreign_api 
 			})
 		}
 

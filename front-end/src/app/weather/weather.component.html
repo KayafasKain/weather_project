@@ -20,8 +20,11 @@
 					</ng-template>
 		    			
 					<div class="weather_block">
-						<div  *ngFor = "let weather_item of weather ">
-							<div  class="weather_block" >
+						<div  *ngIf="error.message != false">
+							<div class = "error">{{ error.message }}</div>
+						</div>						
+						<div *ngFor = "let weather_item of weather ">
+							<div  *ngIf="error.message == false" class="weather_block" >
 								<img src="http://openweathermap.org/img/w/{{ weather_item.weather[0].icon }}.png">
 								<span class = "weather_item">{{ weather_item.weather[0].main }}</span>
 								<span class = "weather_item">min t(c):{{ weather_item.main.temp_min }}</span>
@@ -29,6 +32,14 @@
 								<span class = "weather_item">AT:{{ weather_item.dt_txt }}</span>
 							</div>
 						</div>
+					</div>
+					<div>
+						<div *ngIf="requst_to_foreign_api" >
+							Data, which is displayed on a page was taken directly from foreign API
+						</div>
+						<div *ngIf="!requst_to_foreign_api" >
+							Data, which is displayed on a page was taken directly from our DB
+						</div>						
 					</div>
 				</mat-tab>
 			

@@ -57,3 +57,11 @@ input {
 	background-color: #FBF9BF;
 }
 
+.error {
+	background-color: #F69898;
+	font-size: 19px;
+	width: 100%;
+	padding: 25px;
+	text-align: center;
+	color: white;
+}
