@@ -1,0 +1,59 @@
+.container {
+    display: block;
+/*    flex-direction: row;
+    justify-content: center;*/
+    background-color: #FAFAFD;
+	
+}
+
+.mat-button {
+	font-family: 'Cinzel', serif;
+}
+
+input {
+	font-family: 'Cinzel', serif;
+}
+
+.weather {
+/*	display: flex;
+	margin: 0 auto;*/
+}
+
+.search_panel {
+/*	display: flex;
+	margin: 0 auto;	
+	justify-content: flex-start;*/
+}
+
+.gliph_margin {
+	margin-right: 5px;
+}
+
+.date_pads {
+	font-family: 'Cinzel', serif;
+	color: black;
+	font-size: 16px;
+}
+.inside_tab {
+	width: 100%;
+}
+
+.weather_block {
+	background-color: #E5EDF7;
+}
+
+.weather_item {
+	font-family: 'Cinzel', serif;
+	color: black;
+	font-size: 16px;
+	margin-right: 10px;
+}
+
+.weather_item_clouds {
+	background-color: #D0D3D7;
+}
+
+.weather_item_sun {
+	background-color: #FBF9BF;
+}
+

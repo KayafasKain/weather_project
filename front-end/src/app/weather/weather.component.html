@@ -1,0 +1,37 @@
+<div class = "container">
+	<div class = "search_panel">
+		<div class = "search_by_city">
+			<mat-form-field class="">
+				<input   matInput placeholder="City" [(ngModel)]="current_city_name" value="Kiev" >
+			</mat-form-field> 
+			<button mat-button (click)="getWeatherByCity( current_city_name )">By city name</button>
+		</div>		 
+	</div>
+	<div class = "weather">
+		<mat-tab-group  (selectedTabChange)="tabChanged($event)" class="demo-tab-group">
+			
+				<mat-tab   *ngFor = "let date_item of dates " >
+					
+					<ng-template  mat-tab-label>
+						
+							<span class="glyphicon glyphicon-globe gliph_margin"></span>
+							<span class = "date_pads">{{ date_item }}</span>
+						
+					</ng-template>
+		    			
+					<div class="weather_block">
+						<div  *ngFor = "let weather_item of weather ">
+							<div  class="weather_block" >
+								<img src="http://openweathermap.org/img/w/{{ weather_item.weather[0].icon }}.png">
+								<span class = "weather_item">{{ weather_item.weather[0].main }}</span>
+								<span class = "weather_item">min t(c):{{ weather_item.main.temp_min }}</span>
+								<span class = "weather_item">max t(c):{{ weather_item.main.temp_max }}</span>
+								<span class = "weather_item">AT:{{ weather_item.dt_txt }}</span>
+							</div>
+						</div>
+					</div>
+				</mat-tab>
+			
+		</mat-tab-group>
+	</div>
+</div>
