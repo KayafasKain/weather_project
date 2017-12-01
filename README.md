@@ -57,4 +57,5 @@ Short list of commands( back-end ):
 * npm run test - starts server tests
 
 Commands for front-end could be found here: [AngularCLI](https://github.com/angular/angular-cli)
+
 **NOTICE:** in dev mode back-end and front-end are separated. Before commit, you need to run command **ng build** inside **front-end** folder in order to build static files directly into: **api-server/public**
