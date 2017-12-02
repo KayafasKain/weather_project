@@ -1,3 +1,4 @@
+//These function stands for date format validation
 module.exports.ValidateDate = function( date ) {
 	let validated_date = new Date( date );
 	

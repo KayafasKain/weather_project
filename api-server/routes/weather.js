@@ -9,24 +9,34 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 	try {
 
 		let city = req.params.city;
+		//validating provided date
 		let date = validators.ValidateDate( req.params.date );
+		//these variable stands for storing server response and validating some issues
 		let	res_weather = null;
+		//these variable stands for representing data origin: was it taken directly from foreign API, or from local DB
 		let requst_to_foreign_api = false;
 
+		//checking if city exist in our DB
 		let	is_city_exist = await weather.CheckExistCityInDB( city ); 
 		     
 
 		if ( !is_city_exist ) { 
+			//If city NOT exist we making request to weather API and creating record in our DB
 			let json = await weather_api.CityFiveDayForecastRequest( city );
 			requst_to_foreign_api = true;
 			await weather.CreateCity( json );
+			//Finding weather in our DB
 			res_weather = await weather.FindWeather( city, date );
 		}else{
+			//Finding weather in our DB
 			res_weather = await weather.FindWeather( city, date );
 			if( !res_weather ){
+				//If weather for provided date not found, we making request to weather API
 				let json = await  weather_api.CityFiveDayForecastRequest( city );
 				requst_to_foreign_api = true;
+				//Updating our database
 				await weather.UpdateCityWeather( json );
+				//Finding weather in our DB
 				res_weather = await weather.FindWeather( city, date );
 			}
 		}	
@@ -79,25 +89,36 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 
 		let lat = req.params.lat;
 		let lon = req.params.lon;
+		//validating provided date
 		let date = validators.ValidateDate( req.params.date );
+		//these variable stands for storing server response and validating some issues
 		let	res_weather = null;
+		//these variable stands for representing data origin: was it taken directly from foreign API, or from local DB
 		let requst_to_foreign_api = false;
 
+		//finding city name by provided coordinates
 		let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
+		//checking if city exist in our DB
 		let	is_city_exist = await weather.CheckExistCityInDB( json.city.name );
 		requst_to_foreign_api = true;        
 
 		if ( !is_city_exist ) { 
+			//If city NOT exist we making request to weather API and creating record in our DB
 			let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
 			requst_to_foreign_api = true;
 			await weather.CreateCoord( json );
+			//Finding weather in our DB
 			res_weather = await weather.FindWeather( json.city.name, date );
 		}else{
+			//Finding weather in our DB
 			res_weather = await weather.FindWeather( json.city.name, date );
 			if( !res_weather ){
+				//If city NOT exist we making request to weather API and creating record in our DB
 				let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
 				requst_to_foreign_api = true;
+				//Updating our database
 				await weather.UpdateCoordWeather( json );
+				//Finding weather in our DB
 				res_weather = await weather.FindWeather( json.city.name, date );
 			}
 		}	

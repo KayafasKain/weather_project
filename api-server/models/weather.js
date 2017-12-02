@@ -51,32 +51,35 @@ var weather   = new Schema({
 var Weather = module.exports = mongoose.model('weather', weather);
 
 
+//These function help us to avoid duplicating cities and not nessesery API requests
 module.exports.CheckExistCityInDB = async ( name ) => {
 
-	let town = await Weather.findOne({ 
+	let city = await Weather.findOne({ 
 			"city.name": name 
 	});
-	if( town ){
+	if( city ){
 		return true;
 	}else{
 		return false;
 	}
 }
 
+//These function help us to avoid duplicating cities (by coordinates) and not nessesery API requests
 module.exports.CheckExistCoordInDB = async ( lat, lon ) => {
 
-	let town = await Weather.findOne({ 
+	let city = await Weather.findOne({ 
 			"city.coord.lat": lat,
 			"city.coord.lon": lon 
 	});
 
-	if( town ){
+	if( city ){
 		return true;
 	}else{
 		return false;
 	}
 }
 
+//These function is creating city record in DB, if nessesery
 module.exports.CreateCity = async ( json ) => {
 
 	save_object = 	{
@@ -92,6 +95,7 @@ module.exports.CreateCity = async ( json ) => {
 	await weather_obj.save();
 }
 
+//These function is creating city( by coord ) record in DB, if nessesery
 module.exports.CreateCoord = async( json ) => {
 
 	save_object = 	{
@@ -109,6 +113,7 @@ module.exports.CreateCoord = async( json ) => {
 	await weather_obj.save();
 }
 
+//These function is updating list of weather for particular city, if new data is avaliable
 module.exports.UpdateCityWeather = async ( json ) => {
 
 	let up_to_date = await Weather.findOne({ "city.name": json.city.name });
@@ -129,6 +134,7 @@ module.exports.UpdateCityWeather = async ( json ) => {
 	}	
 }  
 
+//These function is updating list of weather for particular coordinates, if new data is avaliable
 module.exports.UpdateCoordWeather = async ( json ) => {
 
 	let up_to_date = await Weather.findOne({ 
@@ -158,6 +164,7 @@ module.exports.UpdateCoordWeather = async ( json ) => {
 	}	
 } 
 
+//These function is searching for weather by city name, retunrs array of weather for specified date
 module.exports.FindWeather = async ( name, date ) => {  
 
 	let aggregate = await Weather.aggregate([
@@ -189,6 +196,7 @@ module.exports.FindWeather = async ( name, date ) => {
 
 }
 
+//These function is searching for weather by city coordinates, retunrs array of weather for specified date
 module.exports.FindCoordWeather = async ( lat, lon, date ) => {  
 
 	let aggregate = await Weather.aggregate([
