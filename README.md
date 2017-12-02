@@ -50,11 +50,11 @@ In order to achieve these goal, follow these steps:
 1. Go to localhost:4000 ( default )
 
 Short list of commands( back-end ):
-* npm start - starts application in production mode
-* npm stop - stops application in production mode
-* npm restart - restarts application in production mode
-* npm run dev-server - starts server in development mode
-* npm run test - starts server tests
+* **npm start** - starts application in production mode
+* **npm stop** - stops application in production mode
+* **npm restart** - restarts application in production mode
+* **npm run dev-server** - starts server in development mode
+* **npm run test** - starts server tests
 
 Commands for front-end could be found here: [AngularCLI](https://github.com/angular/angular-cli)
 
