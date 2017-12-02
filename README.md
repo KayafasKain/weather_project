@@ -1,5 +1,5 @@
 # Weather project
-Hello! Here is simple weather app. In shrot, its build with MEAN2.0 (Mongo Express Angular5 Node and weather API from [openweathermap.org](http://openweathermap.org)
+Hello! Here is simple weather app [see demo here](https://weather-ligtit-app.herokuapp.com/). In shrot, its build with MEAN2.0 (Mongo Express Angular5 Node and weather API from [openweathermap.org](http://openweathermap.org)
 
 ## Set up
 In order to make projet work in dev-mode, you have to install following software:
