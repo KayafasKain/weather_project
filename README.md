@@ -5,6 +5,7 @@ Hello! Here is simple weather app ([see demo here](https://weather-ligtit-app.he
 In order to make projet work in dev-mode, you have to install following software:
 * Node.js >= 8v
 * Express >= 4v
+* AngularCLI
 
 Also, you need to have acces to MongoDB database >= 3.6v 
 All nesessery parameters is easy to set or change in config file: 
