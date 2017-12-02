@@ -5,6 +5,7 @@
 				<input   matInput placeholder="City" [(ngModel)]="current_city_name" value="Kiev" >
 			</mat-form-field> 
 			<button mat-button (click)="getWeatherByCity( current_city_name )">Search</button>
+			<button mat-button (click)="getWeatherByCoords()">Geolocation</button>
 		</div>		 
 	</div>
 	<div class = "weather">	

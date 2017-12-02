@@ -14,10 +14,10 @@ let now_date = new Date()
 
 let day = "";
 
-if( (""+now_date.getUTCDate()).length < 2 ) {
-	day += "0" + now_date.getUTCDate(); 
+if( (""+now_date.getDate()).length < 2 ) {
+	day += "0" + now_date.getDate(); 
 }else{
-	day = ""+now_date.getUTCDate();
+	day = ""+now_date.getDate();
 }
 
 

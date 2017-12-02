@@ -15,6 +15,8 @@ export class WeatherComponent implements OnInit {
 	current_city_name: string;
 	error: any;
 	requst_to_foreign_api: boolean;
+	geolocation_permission: boolean;
+	coords: any;
 	spinner: {};
 
 	constructor( private weatherApiService: WeatherApiService ) { 
@@ -28,6 +30,10 @@ export class WeatherComponent implements OnInit {
 			this.error = { message: false };
 		//These variable stands for displaying origin of data displayed on a page
 			this.requst_to_foreign_api = false;
+		//Variable which is checking geolocation permissions	
+			this.geolocation_permission = false;
+		//Coordinates, for coord search
+			this.coords = [ 0, 0 ];	
 		//These object is reuired to control the spinner
 			this.spinner = {
 				color: 'primary',
@@ -56,6 +62,8 @@ export class WeatherComponent implements OnInit {
 			this.selected_date = this.dates[0];	
 		//Recieve initial data for first tab
 			this.getWeatherByCity( this.current_city_name );
+		//Checking geolocation permissions
+			this.checkGeoLocation();
 
 	}
 
@@ -83,6 +91,55 @@ export class WeatherComponent implements OnInit {
 			this.error.message = temp.items.message;
 			this.weather = [];
 		});
+	}
+
+
+//checking geolocation permissions
+	checkGeoLocation(){
+
+		if( "geolocation" in navigator ) {
+			this.geolocation_permission = true;
+		}else{
+			this.geolocation_permission = false;
+		}
+
+	}
+
+//get current coordinates
+	getPreciseLocation() {
+		return new Promise(function (resolve, reject) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				resolve([position.coords.latitude, position.coords.longitude]);
+			});
+		});
+	}
+
+//get weather by coordinates lat and lon 
+	 	getWeatherByCoords() {
+		this.checkGeoLocation();
+
+		this.getPreciseLocation().then(( coords ) => {
+			this.coords = coords;
+	
+
+			this.weather = [];
+			this.weatherApiService.getWeatherCoords( this.coords[0], this.coords[1], this.selected_date )
+				.then((res:any) => {
+					this.weather = res.items;
+
+					this.requst_to_foreign_api = res.requst_to_foreign_api;
+					this.current_city_name = res.city;
+
+					this.error.message = false;
+					this.changeDisplayDate( this.weather );
+			}).catch((err:any) => {
+				console.log(err);
+				let temp =  JSON.parse(err._body)
+				this.error.message = temp.items.message;
+				this.weather = [];
+			});
+		});
+
 	}
 
 

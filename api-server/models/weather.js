@@ -191,7 +191,7 @@ module.exports.FindWeather = async ( name, date ) => {
 	if( aggregate[0].city.list.length == 0){
 		return false;
 	}else{
-		return aggregate[0].city.list;
+		return aggregate[0].city;
 	}
 
 }

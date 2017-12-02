@@ -46,7 +46,8 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 		}else{
 			res.statusCode = 200;
 			res.json({
-				items: res_weather ,
+				items: res_weather.list,
+				city: city,
 				requst_to_foreign_api: requst_to_foreign_api
 			})
 		}
@@ -87,6 +88,7 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 	try {
 
+		let city = "";
 		let lat = req.params.lat;
 		let lon = req.params.lon;
 		//validating provided date
@@ -100,6 +102,7 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 		let json = await  weather_api.CoordFiveDayForecastRequest( lat, lon );
 		//checking if city exist in our DB
 		let	is_city_exist = await weather.CheckExistCityInDB( json.city.name );
+		city = json.city.name;
 		requst_to_foreign_api = true;        
 
 		if ( !is_city_exist ) { 
@@ -128,7 +131,8 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 		}else{
 			res.statusCode = 200;
 			res.json({
-				items: res_weather,
+				items: res_weather.list,
+				city: city,
 				requst_to_foreign_api: requst_to_foreign_api 
 			})
 		}

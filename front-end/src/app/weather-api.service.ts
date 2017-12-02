@@ -15,4 +15,12 @@ export class WeatherApiService {
 		})
 	}
 
+	getWeatherCoords( lat, lon, date ) {
+		return this.http.get('/api/weather_api/recieve/' + lat + '/' + lon + '/' + date + '')
+		.toPromise()
+		.then((res:Response) => {
+			return res.json();
+		})
+	}	
+
 }
