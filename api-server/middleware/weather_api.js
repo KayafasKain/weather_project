@@ -1,7 +1,7 @@
 
 const express = require('express');
 const config = require('../config.json');
-var fetch = require("node-fetch");
+const fetch = require("node-fetch");
 
 //These function stands for recieving json from api.openweathermap.org, by using city name as main parameter
 module.exports.CityFiveDayForecastRequest = async ( city ) => {

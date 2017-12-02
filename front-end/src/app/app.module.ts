@@ -1,11 +1,8 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { MatFormFieldModule, MatNativeDateModule } from '@angular/material';
-import { MatInputModule } from '@angular/material';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { InterceptorService } from 'ng2-interceptors';
 import { XHRBackend, RequestOptions } from '@angular/http';
 import { ServerURLInterceptor } from './ServerURLInterceptor';
@@ -36,14 +33,11 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
 
     BrowserModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatFormFieldModule,
     MatButtonModule, 
-    MatNativeDateModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatGridListModule,
     MatTabsModule,
     FormsModule,
     HttpModule

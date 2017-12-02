@@ -10,7 +10,7 @@ const server = require('../app.js');
 const should = chai.should();
 chai.use(chaiHttp);
 
-var now_date = new Date()
+let now_date = new Date()
 
 let day = "";
 

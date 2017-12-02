@@ -63,7 +63,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n<link href=\"https://fonts.googleapis.com/css?family=Cinzel\" rel=\"stylesheet\">\r\n<app-weather></app-weather>"
+module.exports = "<app-weather></app-weather>"
 
 /***/ }),
 
@@ -106,19 +106,18 @@ var AppComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_datepicker__ = __webpack_require__("../../../material/esm5/datepicker.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_progress_spinner__ = __webpack_require__("../../../material/esm5/progress-spinner.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material_tabs__ = __webpack_require__("../../../material/esm5/tabs.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_grid_list__ = __webpack_require__("../../../material/esm5/grid-list.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_interceptors__ = __webpack_require__("../../../../ng2-interceptors/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_interceptors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng2_interceptors__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ServerURLInterceptor__ = __webpack_require__("../../../../../src/app/ServerURLInterceptor.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__weather_api_service__ = __webpack_require__("../../../../../src/app/weather-api.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__weather_weather_component__ = __webpack_require__("../../../../../src/app/weather/weather.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_interceptors__ = __webpack_require__("../../../../ng2-interceptors/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_interceptors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_interceptors__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ServerURLInterceptor__ = __webpack_require__("../../../../../src/app/ServerURLInterceptor.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__weather_api_service__ = __webpack_require__("../../../../../src/app/weather-api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__weather_weather_component__ = __webpack_require__("../../../../../src/app/weather/weather.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -140,11 +139,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
 function interceptorFactory(xhrBackend, requestOptions, serverURLInterceptor) {
-    var service = new __WEBPACK_IMPORTED_MODULE_5_ng2_interceptors__["InterceptorService"](xhrBackend, requestOptions);
+    var service = new __WEBPACK_IMPORTED_MODULE_4_ng2_interceptors__["InterceptorService"](xhrBackend, requestOptions);
     service.addInterceptor(serverURLInterceptor);
     return service;
 }
@@ -152,36 +148,33 @@ var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_11__angular_core__["H" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_10__angular_core__["H" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__weather_weather_component__["a" /* WeatherComponent */]
+                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__weather_weather_component__["a" /* WeatherComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_10__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_material_progress_spinner__["a" /* MatProgressSpinnerModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_animations__["b" /* NoopAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatFormFieldModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCheckboxModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_material_datepicker__["a" /* MatDatepickerModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_material_grid_list__["a" /* MatGridListModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_material_tabs__["a" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_9__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_http__["HttpModule"]
+                __WEBPACK_IMPORTED_MODULE_8__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_http__["HttpModule"]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_7__ServerURLInterceptor__["a" /* ServerURLInterceptor */],
+                __WEBPACK_IMPORTED_MODULE_6__ServerURLInterceptor__["a" /* ServerURLInterceptor */],
                 {
-                    provide: __WEBPACK_IMPORTED_MODULE_5_ng2_interceptors__["InterceptorService"],
+                    provide: __WEBPACK_IMPORTED_MODULE_4_ng2_interceptors__["InterceptorService"],
                     useFactory: interceptorFactory,
-                    deps: [__WEBPACK_IMPORTED_MODULE_6__angular_http__["XHRBackend"], __WEBPACK_IMPORTED_MODULE_6__angular_http__["RequestOptions"], __WEBPACK_IMPORTED_MODULE_7__ServerURLInterceptor__["a" /* ServerURLInterceptor */]]
+                    deps: [__WEBPACK_IMPORTED_MODULE_5__angular_http__["XHRBackend"], __WEBPACK_IMPORTED_MODULE_5__angular_http__["RequestOptions"], __WEBPACK_IMPORTED_MODULE_6__ServerURLInterceptor__["a" /* ServerURLInterceptor */]]
                 },
-                __WEBPACK_IMPORTED_MODULE_8__weather_api_service__["a" /* WeatherApiService */]
+                __WEBPACK_IMPORTED_MODULE_7__weather_api_service__["a" /* WeatherApiService */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -240,7 +233,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".container {\r\n    display: block;\r\n/*    flex-direction: row;\r\n    justify-content: center;*/\r\n    background-color: #FAFAFD;\r\n\t\r\n}\r\n\r\n.mat-button {\r\n\tfont-family: 'Cinzel', serif;\r\n}\r\n\r\ninput {\r\n\tfont-family: 'Cinzel', serif;\r\n}\r\n\r\n.weather {\r\n/*\tdisplay: flex;\r\n\tmargin: 0 auto;*/\r\n}\r\n\r\n.search_panel {\r\n/*\tdisplay: flex;\r\n\tmargin: 0 auto;\t\r\n\tjustify-content: flex-start;*/\r\n}\r\n\r\n.gliph_margin {\r\n\tmargin-right: 5px;\r\n}\r\n\r\n.date_pads {\r\n\tfont-family: 'Cinzel', serif;\r\n\tcolor: black;\r\n\tfont-size: 16px;\r\n}\r\n.inside_tab {\r\n\twidth: 100%;\r\n}\r\n\r\n.weather_block {\r\n\tbackground-color: #E5EDF7;\r\n}\r\n\r\n.weather_item {\r\n\tfont-family: 'Cinzel', serif;\r\n\tcolor: black;\r\n\tfont-size: 16px;\r\n\tmargin-right: 10px;\r\n}\r\n\r\n.weather_item_clouds {\r\n\tbackground-color: #D0D3D7;\r\n}\r\n\r\n.weather_item_sun {\r\n\tbackground-color: #FBF9BF;\r\n}\r\n\r\n.error {\r\n\tbackground-color: #F69898;\r\n\tfont-size: 19px;\r\n\twidth: 100%;\r\n\tpadding: 25px;\r\n\ttext-align: center;\r\n\tcolor: white;\r\n}\r\n", ""]);
+exports.push([module.i, ".container {\r\n\tdisplay: block;\r\n\r\n\tbackground-color: #FAFAFD;\r\n\r\n\tpadding-right: 15px;\r\n\tpadding-left: 15px;\r\n\tmargin-right: auto;\r\n\tmargin-left: auto;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\t.container {\r\n\t\twidth: 750px;\r\n\t}\r\n}\r\n@media (min-width: 992px) {\r\n\t.container {\r\n\t\twidth: 970px;\r\n\t}\r\n}\r\n@media (min-width: 1200px) {\r\n\t.container {\r\n\t\twidth: 1170px;\r\n\t}\r\n}\r\n\r\n.mat-button {\r\n\tfont-family: 'Cinzel', serif;\r\n}\r\n\r\ninput {\r\n\tfont-family: 'Cinzel', serif;\r\n}\r\n\r\n.weather {\r\n/*\tdisplay: flex;\r\n\tmargin: 0 auto;*/\r\n}\r\n\r\n.search_panel {\r\n/*\tdisplay: flex;\r\n\tmargin: 0 auto;\t\r\n\tjustify-content: flex-start;*/\r\n}\r\n\r\n.gliph_margin {\r\n\tmargin-right: 5px;\r\n}\r\n\r\n.date_pads {\r\n\tfont-family: 'Cinzel', serif;\r\n\tcolor: black;\r\n\tfont-size: 16px;\r\n}\r\n.inside_tab {\r\n\twidth: 100%;\r\n}\r\n\r\n.weather_block {\r\n\tbackground-color: #E5EDF7;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row; \r\n\t-webkit-box-pack: start; \r\n\t    -ms-flex-pack: start; \r\n\t        justify-content: flex-start;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\r\n}\r\n\r\n.weather_item {\r\n\tfont-family: 'Cinzel', serif;\r\n\tcolor: black;\r\n\tfont-size: 16px;\r\n\tmargin-right: 10px;\r\n}\r\n\r\n.weather_item_clouds {\r\n\tbackground-color: #D0D3D7;\r\n}\r\n\r\n.weather_item_sun {\r\n\tbackground-color: #FBF9BF;\r\n}\r\n\r\n.wait_load {\r\n\tmin-height: 300px;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -ms-flexbox;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t    -ms-flex-direction: row;\r\n\t        flex-direction: row;\r\n\t-webkit-box-align: center;\r\n\t    -ms-flex-align: center;\r\n\t        align-items: center;\r\n\t-webkit-box-pack: center;\r\n\t    -ms-flex-pack: center;\r\n\t        justify-content: center;\r\n}\r\n\r\n.error {\r\n\tbackground-color: #F69898;\r\n\tfont-size: 19px;\r\n\twidth: 100%;\r\n\tpadding: 25px;\r\n\ttext-align: center;\r\n\tcolor: white;\r\n}\r\n", ""]);
 
 // exports
 
@@ -253,7 +246,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/weather/weather.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class = \"container\">\n\t<div class = \"search_panel\">\n\t\t<div class = \"search_by_city\">\n\t\t\t<mat-form-field class=\"\">\n\t\t\t\t<input   matInput placeholder=\"City\" [(ngModel)]=\"current_city_name\" value=\"Kiev\" >\n\t\t\t</mat-form-field> \n\t\t\t<button mat-button (click)=\"getWeatherByCity( current_city_name )\">Search</button>\n\t\t</div>\t\t \n\t</div>\n\t<div class = \"weather\">\n\t\t<mat-tab-group  (selectedTabChange)=\"tabChanged($event)\" class=\"demo-tab-group\">\n\t\t\t\n\t\t\t\t<mat-tab   *ngFor = \"let date_item of dates \" >\n\t\t\t\t\t\n\t\t\t\t\t<ng-template  mat-tab-label>\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t<span class=\"glyphicon glyphicon-globe gliph_margin\"></span>\n\t\t\t\t\t\t\t<span class = \"date_pads\">{{ date_item }}</span>\n\t\t\t\t\t\t\n\t\t\t\t\t</ng-template>\n\t\t    \t\t\t\n\t\t\t\t\t<div class=\"weather_block\">\n\t\t\t\t\t\t<div  *ngIf=\"error.message != false\">\n\t\t\t\t\t\t\t<div class = \"error\">{{ error.message }}</div>\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t\t\t\t<div *ngFor = \"let weather_item of weather \">\n\t\t\t\t\t\t\t<div  *ngIf=\"error.message == false\" class=\"weather_block\" >\n\t\t\t\t\t\t\t\t<img src=\"http://openweathermap.org/img/w/{{ weather_item.weather[0].icon }}.png\">\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">{{ weather_item.weather[0].main }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">min t(c):{{ weather_item.main.temp_min }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">max t(c):{{ weather_item.main.temp_max }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">AT:{{ weather_item.dt_txt }}</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div *ngIf=\"requst_to_foreign_api\" >\n\t\t\t\t\t\t\tData, which is displayed on a page was taken directly from foreign API\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div *ngIf=\"!requst_to_foreign_api\" >\n\t\t\t\t\t\t\tData, which is displayed on a page was taken directly from our DB\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</mat-tab>\n\t\t\t\n\t\t</mat-tab-group>\n\t</div>\n</div>"
+module.exports = "<div class = \"container\">\n\t<div class = \"search_panel\">\n\t\t<div class = \"search_by_city\">\n\t\t\t<mat-form-field class=\"\">\n\t\t\t\t<input   matInput placeholder=\"City\" [(ngModel)]=\"current_city_name\" value=\"Kiev\" >\n\t\t\t</mat-form-field> \n\t\t\t<button mat-button (click)=\"getWeatherByCity( current_city_name )\">Search</button>\n\t\t</div>\t\t \n\t</div>\n\t<div class = \"weather\">\t\n\t\t<mat-tab-group  (selectedTabChange)=\"tabChanged($event)\" class=\"demo-tab-group\">\n\t\t\t\n\t\t\t\t<mat-tab   *ngFor = \"let date_item of dates \" >\n\t\t\t\t\t\n\t\t\t\t\t<ng-template  mat-tab-label>\n\t\t\t\t\t\t\t<span class = \"date_pads\">{{ date_item }}</span>\t\t\t\t\t\t\n\t\t\t\t\t</ng-template>\n\t\t    \t\t\t\n\t\t\t\t\t<div class=\"\">\n\t\t\t\t\t\t<div  *ngIf=\"error.message != false\">\n\t\t\t\t\t\t\t<div class = \"error\">{{ error.message }}</div>\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t\t\t\t<div *ngFor = \"let weather_item of weather \">\n\t\t\t\t\t\t\t<div  *ngIf=\"error.message == false\" class=\"weather_block\" >\n\t\t\t\t\t\t\t\t<img src=\"http://openweathermap.org/img/w/{{ weather_item.weather[0].icon }}.png\">\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">{{ weather_item.weather[0].main }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">min t(c):{{ weather_item.main.temp_min }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">max t(c):{{ weather_item.main.temp_max }}</span>\n\t\t\t\t\t\t\t\t<span class = \"weather_item\">AT:{{ weather_item.dt_txt }}</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class = \"wait_load\" *ngIf = \"weather.length == 0\" >\n\t\t\t\t\t\t\t<mat-progress-spinner\n\t\t\t\t\t\t\t\tclass=\"example-margin\"\n\t\t\t\t\t\t\t\t[color]=\"spinner.color\"\n\t\t\t\t\t\t\t\t[mode]=\"spinner.mode\"\n\t\t\t\t\t\t\t\t[value]=\"spinner.value\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t</mat-progress-spinner>\t\t\t\t\t\t\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<div *ngIf=\"requst_to_foreign_api\" >\n\t\t\t\t\t\t\tData, which is displayed on a page was taken directly from foreign API\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div *ngIf=\"!requst_to_foreign_api\" >\n\t\t\t\t\t\t\tData, which is displayed on a page was taken directly from our DB\n\t\t\t\t\t\t</div>\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</mat-tab>\n\t\t\t\n\t\t</mat-tab-group>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -288,6 +281,12 @@ var WeatherComponent = (function () {
         this.error = { message: false };
         //These variable stands for displaying origin of data displayed on a page
         this.requst_to_foreign_api = false;
+        //These object is reuired to control the spinner
+        this.spinner = {
+            color: 'primary',
+            mode: 'indeterminate',
+            value: 50
+        };
         //Initiating array of dates, in order to supply user interface
         var now_date = new Date();
         var myDate = new Date(now_date.getFullYear(), (now_date.getMonth()), now_date.getDate(), 0, 0, 0);
@@ -315,6 +314,7 @@ var WeatherComponent = (function () {
     // getWeatherByCity function makes request to server in order to recieve weather by city name and date
     WeatherComponent.prototype.getWeatherByCity = function (name) {
         var _this = this;
+        this.weather = [];
         this.weatherApiService.getWeatherCity(name, this.selected_date)
             .then(function (res) {
             _this.weather = res.items;
@@ -326,6 +326,7 @@ var WeatherComponent = (function () {
             console.log(err);
             var temp = JSON.parse(err._body);
             _this.error.message = temp.items.message;
+            _this.weather = [];
         });
     };
     // Changing display date by removing date, and leaving time

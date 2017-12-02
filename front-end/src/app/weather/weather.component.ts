@@ -15,6 +15,7 @@ export class WeatherComponent implements OnInit {
 	current_city_name: string;
 	error: any;
 	requst_to_foreign_api: boolean;
+	spinner: {};
 
 	constructor( private weatherApiService: WeatherApiService ) { 
 		//dates array stands for storing dates, which are awaliable for forecast
@@ -27,6 +28,12 @@ export class WeatherComponent implements OnInit {
 			this.error = { message: false };
 		//These variable stands for displaying origin of data displayed on a page
 			this.requst_to_foreign_api = false;
+		//These object is reuired to control the spinner
+			this.spinner = {
+				color: 'primary',
+				mode: 'indeterminate',
+				value: 50
+			}	
 
 		//Initiating array of dates, in order to supply user interface
 			let now_date = new Date();	
@@ -60,18 +67,21 @@ export class WeatherComponent implements OnInit {
 
 // getWeatherByCity function makes request to server in order to recieve weather by city name and date
 	getWeatherByCity( name ) {
-
+		this.weather = [];
 		this.weatherApiService.getWeatherCity( name, this.selected_date )
 			.then((res:any) => {
-		this.weather = res.items;
-		this.requst_to_foreign_api = res.requst_to_foreign_api;
-		console.log(this.requst_to_foreign_api);
-		this.error.message = false;
-		this.changeDisplayDate( this.weather );
+				this.weather = res.items;
+
+				this.requst_to_foreign_api = res.requst_to_foreign_api;
+				console.log(this.requst_to_foreign_api);
+
+				this.error.message = false;
+				this.changeDisplayDate( this.weather );
 		}).catch((err:any) => {
 			console.log(err);
 			let temp =  JSON.parse(err._body)
 			this.error.message = temp.items.message;
+			this.weather = [];
 		});
 	}
 

@@ -1,9 +1,28 @@
 .container {
-    display: block;
-/*    flex-direction: row;
-    justify-content: center;*/
-    background-color: #FAFAFD;
-	
+	display: block;
+
+	background-color: #FAFAFD;
+
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 768px) {
+	.container {
+		width: 750px;
+	}
+}
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
+}
+@media (min-width: 1200px) {
+	.container {
+		width: 1170px;
+	}
 }
 
 .mat-button {
@@ -40,6 +59,11 @@ input {
 
 .weather_block {
 	background-color: #E5EDF7;
+	display: flex;
+	flex-direction: row; 
+	justify-content: flex-start;
+	align-items: center;
+
 }
 
 .weather_item {
@@ -55,6 +79,14 @@ input {
 
 .weather_item_sun {
 	background-color: #FBF9BF;
+}
+
+.wait_load {
+	min-height: 300px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 .error {

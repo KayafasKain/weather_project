@@ -7,19 +7,16 @@
 			<button mat-button (click)="getWeatherByCity( current_city_name )">Search</button>
 		</div>		 
 	</div>
-	<div class = "weather">
+	<div class = "weather">	
 		<mat-tab-group  (selectedTabChange)="tabChanged($event)" class="demo-tab-group">
 			
 				<mat-tab   *ngFor = "let date_item of dates " >
 					
 					<ng-template  mat-tab-label>
-						
-							<span class="glyphicon glyphicon-globe gliph_margin"></span>
-							<span class = "date_pads">{{ date_item }}</span>
-						
+							<span class = "date_pads">{{ date_item }}</span>						
 					</ng-template>
 		    			
-					<div class="weather_block">
+					<div class="">
 						<div  *ngIf="error.message != false">
 							<div class = "error">{{ error.message }}</div>
 						</div>						
@@ -31,6 +28,15 @@
 								<span class = "weather_item">max t(c):{{ weather_item.main.temp_max }}</span>
 								<span class = "weather_item">AT:{{ weather_item.dt_txt }}</span>
 							</div>
+						</div>
+						<div class = "wait_load" *ngIf = "weather.length == 0" >
+							<mat-progress-spinner
+								class="example-margin"
+								[color]="spinner.color"
+								[mode]="spinner.mode"
+								[value]="spinner.value"
+								>
+							</mat-progress-spinner>							
 						</div>
 					</div>
 					<div>

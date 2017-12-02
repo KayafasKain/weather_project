@@ -1,18 +1,18 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var db_connection = require('./db/db_config.js');
-var config = require('config');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const db_connection = require('./db/db_config.js');
+const config = require('config');
 
-var jwt    = require('jsonwebtoken');
+const jwt    = require('jsonwebtoken');
 
-var user_api = require('./routes/user.js');
-var weather_api = require('./routes/weather.js');
+const user_api = require('./routes/user.js');
+const weather_api = require('./routes/weather.js');
 
-var app = express();
+const app = express();
 app.use(morgan('dev'));
 if(config.util.getEnv('NODE_ENV') == 'start') {
   app.use(morgan('common'));
