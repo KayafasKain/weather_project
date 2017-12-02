@@ -1,10 +1,11 @@
 # Weather project
-Hello! Here is simple weather app ([see demo here](https://weather-ligtit-app.herokuapp.com/)). In shrot, its build with MEAN2.0 (Mongo Express Angular5 Node and weather API from [openweathermap.org](http://openweathermap.org)
+Hello! Here is simple weather app ([see demo here](https://weather-ligtit-app.herokuapp.com/)). In short, its build with MEAN2.0 (Mongo Express Angular5 Node and weather API from [openweathermap.org](http://openweathermap.org)
 
 ## Set up
 In order to make projet work in dev-mode, you have to install following software:
 * Node.js >= 8v
 * Express >= 4v
+* AngularCLI
 
 Also, you need to have acces to MongoDB database >= 3.6v 
 All nesessery parameters is easy to set or change in config file: 
@@ -50,11 +51,11 @@ In order to achieve these goal, follow these steps:
 1. Go to localhost:4000 ( default )
 
 Short list of commands( back-end ):
-* npm start - starts application in production mode
-* npm stop - stops application in production mode
-* npm restart - restarts application in production mode
-* npm run dev-server - starts server in development mode
-* npm run test - starts server tests
+* **npm start** - starts application in production mode
+* **npm stop** - stops application in production mode
+* **npm restart** - restarts application in production mode
+* **npm run dev-server** - starts server in development mode
+* **npm run test** - starts server tests
 
 Commands for front-end could be found here: [AngularCLI](https://github.com/angular/angular-cli)
 
