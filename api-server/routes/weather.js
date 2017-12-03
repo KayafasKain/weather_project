@@ -15,7 +15,6 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 		let	res_weather = null;
 		//these variable stands for representing data origin: was it taken directly from foreign API, or from local DB
 		let requst_to_foreign_api = false;
-
 		//checking if city exist in our DB
 		let	is_city_exist = await weather.CheckExistCityInDB( city ); 
 		     
@@ -47,7 +46,7 @@ router.get('/recieve/:city/:date', async ( req, res, next ) => {
 			res.statusCode = 200;
 			res.json({
 				items: res_weather.list,
-				city: city,
+				city: res_weather.city,
 				requst_to_foreign_api: requst_to_foreign_api
 			})
 		}
@@ -132,7 +131,7 @@ router.get('/recieve/:lat/:lon/:date', async ( req, res, next ) => {
 			res.statusCode = 200;
 			res.json({
 				items: res_weather.list,
-				city: city,
+				city: res_weather.city,
 				requst_to_foreign_api: requst_to_foreign_api 
 			})
 		}

@@ -1,3 +1,7 @@
+agm-map {
+  height: 300px;
+}
+
 .container {
 	display: block;
 
@@ -9,10 +13,21 @@
 	margin-left: auto;
 }
 
+@media (min-width: 320px) {
+	.weather_item {
+		font-size: 12px;
+		margin-right: 5px;
+	}
+}
+
 @media (min-width: 768px) {
 	.container {
 		width: 750px;
 	}
+	.weather_item {
+		font-size: 16px;
+		margin-right: 10px;
+	}	
 }
 @media (min-width: 992px) {
 	.container {
@@ -69,8 +84,6 @@ input {
 .weather_item {
 	font-family: 'Cinzel', serif;
 	color: black;
-	font-size: 16px;
-	margin-right: 10px;
 }
 
 .weather_item_clouds {

@@ -9,6 +9,8 @@ import { ServerURLInterceptor } from './ServerURLInterceptor';
 import { HttpModule } from '@angular/http';
 import { WeatherApiService } from './weather-api.service';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,11 +19,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 
+
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, serverURLInterceptor:ServerURLInterceptor){
   let service = new InterceptorService(xhrBackend, requestOptions);
   service.addInterceptor(serverURLInterceptor);
   return service;
 }
+
 
 
 @NgModule({
@@ -30,7 +34,6 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     WeatherComponent
   ],
   imports: [
-
     BrowserModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -40,7 +43,10 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     MatButtonModule, 
     MatTabsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCm556dvNJh7LImeMrRMkTSQCjOPlxAXP0'
+    })    
   ],
   providers: [
   	ServerURLInterceptor,

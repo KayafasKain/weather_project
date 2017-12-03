@@ -166,6 +166,10 @@ module.exports.UpdateCoordWeather = async ( json ) => {
 
 //These function is searching for weather by city name, retunrs array of weather for specified date
 module.exports.FindWeather = async ( name, date ) => {  
+	
+	let city_object = await Weather.findOne({ 
+			"city.name": name 
+	});
 
 	let aggregate = await Weather.aggregate([
 		{ "$match": { "city.name": name } },
@@ -191,13 +195,27 @@ module.exports.FindWeather = async ( name, date ) => {
 	if( aggregate[0].city.list.length == 0){
 		return false;
 	}else{
-		return aggregate[0].city;
+		return {
+			list: aggregate[0].city.list,
+			city: {
+				name: city_object.city.name,
+				coord: city_object.city.coord
+			}
+		}
 	}
 
 }
 
 //These function is searching for weather by city coordinates, retunrs array of weather for specified date
 module.exports.FindCoordWeather = async ( lat, lon, date ) => {  
+
+	let city_object = await Weather.findOne({ 
+			"city.coord.lat": lat,
+			"city.coord.lon": lon 
+	});
+
+	console.log("==================================");
+	console.log(city_object);
 
 	let aggregate = await Weather.aggregate([
 		{ "$match": { 
@@ -225,7 +243,13 @@ module.exports.FindCoordWeather = async ( lat, lon, date ) => {
 	if( aggregate[0].city.list.length == 0){
 		return false;
 	}else{
-		return aggregate[0].city.list;
+		return {
+			list: aggregate[0].city.list,
+			city: {
+				name: city_object.city.name,
+				coord: city_object.city.coord
+			}
+		}
 	}
 
 }

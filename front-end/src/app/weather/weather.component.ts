@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherApiService } from '../weather-api.service';
 
 
+
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
@@ -41,21 +42,12 @@ export class WeatherComponent implements OnInit {
 				value: 50
 			}	
 
-		//Initiating array of dates, in order to supply user interface
-			let now_date = new Date();	
-			let myDate = new Date(now_date.getFullYear(),(now_date.getMonth()),now_date.getDate(),0,0,0);		
+		//Initiating array of dates, in order to supply user interface	
+			
 			for( let i = 0; i < 5; i++ ) { 
-
-				let newDate = new Date(myDate.getTime() + 1000 * 60 * 60 * (24 * (i+1)));
-				let day = "";
-
-				if( (""+newDate.getUTCDate()).length < 2 ) {
-					day += "0" + newDate.getUTCDate(); 
-				}else{
-					day = ""+newDate.getUTCDate();
-				}
-
-				this.dates.push(newDate.getFullYear() + "-" + (newDate.getUTCMonth()+1) + "-" + day);
+				let d = new Date();
+				d.setDate( d.getDate() + i );
+				this.dates.push( d.toISOString().slice(0, 10) );
 			}
 
 		//Set current date, as default	
@@ -81,8 +73,7 @@ export class WeatherComponent implements OnInit {
 				this.weather = res.items;
 
 				this.requst_to_foreign_api = res.requst_to_foreign_api;
-				console.log(this.requst_to_foreign_api);
-
+				this.coords = [ res.city.coord.lat, res.city.coord.lon ];
 				this.error.message = false;
 				this.changeDisplayDate( this.weather );
 		}).catch((err:any) => {
@@ -128,7 +119,9 @@ export class WeatherComponent implements OnInit {
 					this.weather = res.items;
 
 					this.requst_to_foreign_api = res.requst_to_foreign_api;
-					this.current_city_name = res.city;
+					console.log(res);
+					this.current_city_name = res.city.name;
+					this.coords = [ res.city.coord.lat, res.city.coord.lon ];
 
 					this.error.message = false;
 					this.changeDisplayDate( this.weather );
@@ -152,7 +145,7 @@ export class WeatherComponent implements OnInit {
 	}	
 
 	ngOnInit() {
-		this.current_city_name = "Kiev"
+		this.current_city_name = "Kiev";
 	}
 
 }
