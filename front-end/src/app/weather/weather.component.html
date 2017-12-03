@@ -30,7 +30,7 @@
 								<span class = "weather_item">AT:{{ weather_item.dt_txt }}</span>
 							</div>
 						</div>
-						<div class = "wait_load" *ngIf = "weather.length == 0" >
+						<div class = "wait_load" *ngIf = "weather.length == 0 && error.message == false" >
 							<mat-progress-spinner
 								class="example-margin"
 								[color]="spinner.color"
