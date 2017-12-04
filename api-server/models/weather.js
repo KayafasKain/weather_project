@@ -48,6 +48,7 @@ var weather   = new Schema({
 { 
 	collection: 'weather' 
 });
+weather.index({"city.name": 1}, {unique: true});
 var Weather = module.exports = mongoose.model('weather', weather);
 
 
