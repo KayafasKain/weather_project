@@ -44,7 +44,7 @@ export class WeatherComponent implements OnInit {
 
 		//Initiating array of dates, in order to supply user interface	
 			
-			for( let i = 0; i <= 5; i++ ) { 
+			for( let i = 0; i < 5; i++ ) { 
 				let d = new Date();
 				d.setUTCDate( d.getUTCDate() + i );
 				this.dates.push( d.toISOString().slice(0, 10) );
