@@ -113,6 +113,7 @@ export class WeatherComponent implements OnInit {
 		this.checkGeoLocation();
 
 		this.getPreciseLocation().then(( coords ) => {
+			this.coords = coords;
 
 			this.weather = [];
 			this.weatherApiService.getWeatherCoords( this.coords[0], this.coords[1], this.selected_date )
