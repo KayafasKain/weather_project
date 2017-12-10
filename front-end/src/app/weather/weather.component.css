@@ -111,6 +111,11 @@ input {
 	color: white;
 }
 
-.error .waring {
+.waring {
 	background-color: #F1C93E;
+	font-size: 19px;
+	width: 100%;
+	padding: 25px;
+	text-align: center;
+	color: white;	
 }

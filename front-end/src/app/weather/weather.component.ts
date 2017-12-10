@@ -87,11 +87,15 @@ export class WeatherComponent implements OnInit {
 //checking geolocation permissions
 	checkGeoLocation(){
 
-		if( "geolocation" in navigator ) {
+		this.getPreciseLocation().then(( coords ) => {
 			this.geolocation_permission = true;
-		}else{
+			console.log("true========");
+		}).catch((err:any) => {
 			this.geolocation_permission = false;
-		}
+			console.log("false=========");
+		});
+
+		console.log(this.geolocation_permission);
 
 	}
 
@@ -109,8 +113,6 @@ export class WeatherComponent implements OnInit {
 		this.checkGeoLocation();
 
 		this.getPreciseLocation().then(( coords ) => {
-			this.coords = coords;
-	
 
 			this.weather = [];
 			this.weatherApiService.getWeatherCoords( this.coords[0], this.coords[1], this.selected_date )
