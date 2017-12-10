@@ -110,3 +110,7 @@ input {
 	text-align: center;
 	color: white;
 }
+
+.error .waring {
+	background-color: #F1C93E;
+}

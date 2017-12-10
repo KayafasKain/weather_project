@@ -20,7 +20,10 @@
 					<div class="">
 						<div  *ngIf="error.message != false">
 							<div class = "error">{{ error.message }}</div>
-						</div>						
+						</div>
+						<div  *ngIf="geolocation_permission == false">
+							<div class = "waring">geolocation disbled... please, allow geolocation</div>
+						</div>												
 						<div *ngFor = "let weather_item of weather ">
 							<div  *ngIf="error.message == false" class="weather_block" >
 								<img src="http://openweathermap.org/img/w/{{ weather_item.weather[0].icon }}.png">

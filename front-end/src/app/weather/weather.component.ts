@@ -77,7 +77,6 @@ export class WeatherComponent implements OnInit {
 				this.error.message = false;
 				this.changeDisplayDate( this.weather );
 		}).catch((err:any) => {
-			console.log(err);
 			let temp =  JSON.parse(err._body)
 			this.error.message = temp.items.message;
 			this.weather = [];
@@ -119,17 +118,16 @@ export class WeatherComponent implements OnInit {
 					this.weather = res.items;
 
 					this.requst_to_foreign_api = res.requst_to_foreign_api;
-					console.log(res);
 					this.current_city_name = res.city.name;
 					this.coords = [ res.city.coord.lat, res.city.coord.lon ];
 
 					this.error.message = false;
 					this.changeDisplayDate( this.weather );
 			}).catch((err:any) => {
-				console.log(err);
 				let temp =  JSON.parse(err._body)
 				this.error.message = temp.items.message;
 				this.weather = [];
+				this.getWeatherByCity( this.current_city_name );
 			});
 		});
 
